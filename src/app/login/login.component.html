@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div class="container my-5">
+  <form [formGroup]="loginform" (ngSubmit)="login()">
+    <div class="form-group ">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+      <div *ngIf="email.touched && email.invalid">
+        <small *ngIf="email.errors.required" class="text-danger">Email is required</small>
+        <small *ngIf="email.errors.email" class="text-danger">Invalid email</small>
+    </div>   
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+      <div *ngIf="password.touched && password.invalid">
+        <small *ngIf="password.errors.required" class="text-danger">Password is required</small>
+        <small *ngIf="password.errors.minlength" class="text-danger">Password must contain 8 numberss at least</small>
+      </div>  
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="loginform.invalid">Login</button>
+  </form>
+</div>
+<app-footer></app-footer>

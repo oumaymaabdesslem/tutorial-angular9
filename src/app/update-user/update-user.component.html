@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary my-3" [routerLink]="['/people-list']">Back</button>
+            <hr>
+            <h1>Update User</h1>
+        </div>
+    </div>
+    <form [formGroup]="updateuserform" (ngSubmit)="updateuser()">
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="firstname">Firstname :</label>
+                <input type="text" name="firstname" id="firstname"  class="form-control" formControlName="firstname">
+                <div *ngIf="firstname.touched && firstname.invalid">
+                    <small *ngIf="firstname.errors.required" class="text-danger">firstname is required</small>
+                    <small *ngIf="firstname.errors.pattern" class="text-danger">firstname is invalid</small>
+                    <small *ngIf="firstname.errors.minlength" class="text-danger">firstname must contain 2 characters at least</small>
+                </div>
+               
+            </div>
+
+            <div class="form-group col-6">
+                <label for="lastname">Lastname :</label>
+                <input type="text" name="lastname" id="lastname"  class="form-control" formControlName="lastname">
+                <div *ngIf="lastname.touched && lastname.invalid">
+                    <small *ngIf="lastname.errors.required" class="text-danger">Lastname is required</small>
+                    <small *ngIf="lastname.errors.pattern" class="text-danger">Lastname is invalid</small>
+                    <small *ngIf="lastname.errors.minlength" class="text-danger">Lastname must contain 2 characters at least</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="phone">Phone :</label>
+                <input type="text" name="phone" id="phone"class="form-control" formControlName="phone">
+                <div *ngIf="phone.touched && phone.invalid">
+                    <small *ngIf="phone.errors.required" class="text-danger">Phone is required</small>
+                    <small *ngIf="phone.errors.pattern" class="text-danger">Phone is invalid</small>
+                    <small *ngIf="phone.errors.minlength" class="text-danger">Phone must contain 8 numberss at least</small>
+                    <small *ngIf="phone.errors.maxlength" class="text-danger">Phone must contain 13 numberss max</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col">
+                <input type="submit" value="Update User" [disabled]="updateuserform.invalid" class="btn btn-warning">
+            </div>
+        </div>
+
+    </form>
+</div>
+<app-footer></app-footer>

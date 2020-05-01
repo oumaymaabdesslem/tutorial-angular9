@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tutorialangular9"
+    }
+  },
+  "defaultProject": "tutorialangular9",
+  "cli": {
+    "analytics": false
+  }
 }
